@@ -1,0 +1,47 @@
+{
+  "name": "lesson",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://Gospodar91.github.io/goit-react-hw-03-03.v2 ",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.1",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "basiclightbox": "^5.0.2",
+    "gh-pages": "^2.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-loader-spinner": "^3.1.5",
+    "react-responsive-modal": "^4.0.1",
+    "react-scripts": "3.4.0",
+    "uuid": "^7.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "json-loader": "^0.5.7"
+  }
+}
