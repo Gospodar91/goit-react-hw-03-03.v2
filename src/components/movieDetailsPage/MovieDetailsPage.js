@@ -5,6 +5,7 @@ import Reviews from "../reviews/Reviews";
 import css from "../../components/App.css";
 import services from "../services";
 
+
 class MovieDetailsPage extends Component {
   state = {
     movieInfo: []
@@ -15,10 +16,20 @@ class MovieDetailsPage extends Component {
       .then(data => this.setState({ movieInfo: data }));
   }
   render() {
-    // console.log('MovieDetailprop', this.props)
-    const { backdrop_path,original_title,vote_average,overview,id,genres } = {...this.state.movieInfo.data};
+    const {
+      backdrop_path,
+      original_title,
+      vote_average,
+      overview,
+      id,
+      genres
+    } = { ...this.state.movieInfo.data };
+
     return (
       <>
+         <button type="button" onClick={() => this.props.history.goBack()}>
+          Go back
+        </button>
         <div className="allInfo">
           <div className="infoImg">
             <img
@@ -28,14 +39,13 @@ class MovieDetailsPage extends Component {
           </div>
           <div className="textArea">
             <h2 className="title">{original_title}</h2>
-            <p className="score">
-              Average score:{vote_average * 10}%
-            </p>
+            <p className="score">Average score:{vote_average * 10}%</p>
             <h2 className="overviwe">{overview}</h2>
-            <p>{genres && genres.map(genre => <span key={genre.id}>{genre.name} </span>)}</p>
-         
+            <p>
+              {genres &&
+                genres.map(genre => <span key={genre.id}>{genre.name} </span>)}
+            </p>
           </div>
-
         </div>
         <div className={[css.CastRewiewLink]}>
           <Link
@@ -44,7 +54,6 @@ class MovieDetailsPage extends Component {
               state: { id: id }
             }}
           >
-          
             Cast
           </Link>
 
@@ -52,10 +61,9 @@ class MovieDetailsPage extends Component {
           <Link
             to={{
               pathname: `/movies/${id}/MovieDetailsPage/reviews`,
-              state: { id:id }
+              state: { id: id }
             }}
           >
-            
             Review
           </Link>
         </div>
@@ -74,6 +82,3 @@ class MovieDetailsPage extends Component {
   }
 }
 export default MovieDetailsPage;
-
-
-
