@@ -11,13 +11,14 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   color: #212121;
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 img {
@@ -26,11 +27,61 @@ img {
   height: auto;
 }
 
-/*
-   * Стили компонента App
-   */
-   .CastRewiewLink{
-     display: flex;
-     flex-direction: column;
-     background-color: #212121;
-   }
+li {
+  text-decoration-style: none;
+}
+
+ul {
+  text-decoration-style: none;
+
+}
+
+.LinkList {
+  display: flex;
+  text-decoration-style: none !important;
+}
+
+.LinkItem {
+  text-decoration-style: none;
+  margin-right: 100px;
+  font-size: 24px;
+}
+
+.SearchMovie {
+  margin: 0 auto;
+  width: 250px;
+  color: orange;
+
+
+}
+
+.goBackButton {
+  border: 2px solid green;
+  width: 100px;
+  background-color: white;
+  margin-bottom: 50px;
+
+}
+
+.form {
+  width: 100px;
+  margin-left: 650px;
+}
+
+.CastImg {
+  width: 200px;
+}
+
+.LinkCastReview {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.CastLink {
+  margin-bottom: 30px;
+}
+
+.RewiewLink {
+  margin-bottom: 20px;
+}

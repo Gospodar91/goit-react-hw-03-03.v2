@@ -5,7 +5,6 @@ import Reviews from "../reviews/Reviews";
 import css from "../../components/App.css";
 import services from "../services";
 
-
 class MovieDetailsPage extends Component {
   state = {
     movieInfo: []
@@ -27,7 +26,7 @@ class MovieDetailsPage extends Component {
 
     return (
       <>
-         <button type="button" onClick={() => this.props.history.goBack()}>
+        <button type="button" onClick={() => this.props.history.goBack()}>
           Go back
         </button>
         <div className="allInfo">
@@ -47,8 +46,9 @@ class MovieDetailsPage extends Component {
             </p>
           </div>
         </div>
-        <div className={[css.CastRewiewLink]}>
+        <div className="LinkCastReview">
           <Link
+            className="CastLink"
             to={{
               pathname: `/movies/${id}/MovieDetailsPage/cast`,
               state: { id: id }
@@ -57,8 +57,8 @@ class MovieDetailsPage extends Component {
             Cast
           </Link>
 
-          <span>------------------------------------</span>
           <Link
+            className="RewiewLink"
             to={{
               pathname: `/movies/${id}/MovieDetailsPage/reviews`,
               state: { id: id }
@@ -67,16 +67,6 @@ class MovieDetailsPage extends Component {
             Review
           </Link>
         </div>
-        <Switch>
-          <Route
-            path="/movies/:movieId/MovieDetailsPage/cast"
-            component={Cast}
-          />
-          <Route
-            path="/movies/:movieId/MovieDetailsPage/reviews"
-            component={Reviews}
-          />
-        </Switch>
       </>
     );
   }

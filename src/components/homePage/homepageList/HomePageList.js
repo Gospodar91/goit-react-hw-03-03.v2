@@ -10,7 +10,9 @@ const HomePageList = ({ movie }) => {
             pathname: `/movies/${movie.id}/MovieDetailsPage`,
             state: { id: movie.id }
           }}
-        > {movie.name || movie.title}
+        >
+          {" "}
+          {movie.name || movie.title}
         </Link>
       </li>
     </>
