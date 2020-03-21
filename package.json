@@ -2,7 +2,7 @@
   "name": "lesson",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Gospodar91.github.io/goit-react-hw-03-03.v2 ",
+  "homepage": "https://Gospodar91.github.io/goit-react-hw-03-03.v2",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
@@ -15,6 +15,7 @@
     "react-dom": "^16.13.0",
     "react-loader-spinner": "^3.1.5",
     "react-responsive-modal": "^4.0.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "uuid": "^7.0.2"
   },
