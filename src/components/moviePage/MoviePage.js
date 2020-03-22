@@ -12,7 +12,7 @@ class MoviePage extends Component {
     if (prevState.query !== this.state.query) {
       services
         .getSearchMovie(this.state.query)
-        .then(data => this.setState({ searchinfo: data }));
+        .then(data => this.setState({ searchinfo: data.data.results }));
     }
   }
   getQueryonSubmit = async e => {
@@ -20,9 +20,8 @@ class MoviePage extends Component {
     await this.setState({ query: e.target.elements[0].value });
   };
   render() {
-    const { results } = { ...this.state.searchinfo.data };
-    const infoArray = { ...results };
-    const targetSearch = { ...infoArray[0] };
+    const { searchinfo } = this.state;
+    const targetSearch = { ...searchinfo[0] };
     const {
       backdrop_path,
       vote_average,
@@ -30,7 +29,8 @@ class MoviePage extends Component {
       overview,
       id
     } = targetSearch;
-    console.log("results", results);
+    console.log("searchinfo[0]", targetSearch);
+    console.log("results", this.state.searchinfo);
     console.log("this.state.query", this.state.query);
     return (
       <>
@@ -44,14 +44,29 @@ class MoviePage extends Component {
         </button>
 
         <SearchForm getQueryonSubmit={this.getQueryonSubmit} />
-
-        {this.state.query && (
+        {this.state.query && searchinfo.length === 0 && (
+          <h2>Sorry,film was not found</h2>
+        )}
+        {this.state.query && searchinfo.length > 1 && (
           <>
-            {/* <ul>
-    {results.map( movie=>(<li key={movie.id}>{movie.id}</li>)  )}
-
-      </ul>
-           */}
+            <ul>
+              {searchinfo.map(searchinfo => (
+                <li key={searchinfo.id}>
+                  <Link
+                    to={{
+                      pathname: `/movies/${searchinfo.id}/MovieDetailsPage`,
+                      state: { id: searchinfo.id }
+                    }}
+                  >
+                    {searchinfo.original_title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {this.state.query && searchinfo.length === 1 && (
+          <>
             <div className="allInfo">
               <div className="infoImg">
                 <img
@@ -95,3 +110,5 @@ class MoviePage extends Component {
   }
 }
 export default MoviePage;
+
+
