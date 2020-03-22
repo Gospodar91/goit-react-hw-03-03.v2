@@ -14,6 +14,9 @@ class MovieDetailsPage extends Component {
       .movieDetailsPage(this.props.location.state.id)
       .then(data => this.setState({ movieInfo: data }));
   }
+  handleGoBack=()=>{
+    this.props.history.push('/home')
+  }
   render() {
     const {
       backdrop_path,
@@ -23,10 +26,11 @@ class MovieDetailsPage extends Component {
       id,
       genres
     } = { ...this.state.movieInfo.data };
+ 
 
     return (
       <>
-        <button type="button" onClick={() => this.props.history.goBack()}>
+        <button type="button" onClick={this.handleGoBack}>
           Go back
         </button>
         <div className="allInfo">

@@ -19,6 +19,9 @@ class MoviePage extends Component {
     e.preventDefault();
     await this.setState({ query: e.target.elements[0].value });
   };
+  handleGoBack=()=>{
+    this.props.history.push('/home')
+  }
   render() {
     const { searchinfo } = this.state;
     const targetSearch = { ...searchinfo[0] };
@@ -38,7 +41,7 @@ class MoviePage extends Component {
         <button
           className="goBackButton"
           type="button"
-          onClick={() => this.props.history.goBack()}
+          onClick={() => this.handleGoBack}
         >
           Go back
         </button>

@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const API_KEY = "5d541b775537fe62598d0f7b97768427";
 
 const params = {
@@ -6,7 +7,7 @@ const params = {
   // language: "ru-RU"
 };
 axios.defaults.baseURL = "https://api.themoviedb.org/3/";
-export default {
+export default  {
   async getTrendingData() {
     try {
       const data = await axios.get(`trending/all/day`, { params });
@@ -56,5 +57,6 @@ export default {
       console.log("error", error);
       throw new Error();
     }
-  }
+  },
+ 
 };

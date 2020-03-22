@@ -11,8 +11,8 @@ const App = () => {
         <div className="HeaderLink">
           <ul className="LinkList">
             <li className="LinkItem">
-              <NavLink
-                to="/home"
+              <NavLink 
+                to="/home" exact
                 activeStyle={{
                   color: "red",
                   textDecoration: "none",
