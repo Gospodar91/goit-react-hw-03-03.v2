@@ -41,7 +41,7 @@ class MoviePage extends Component {
         <button
           className="goBackButton"
           type="button"
-          onClick={() => this.handleGoBack}
+          onClick={ this.handleGoBack}
         >
           Go back
         </button>
