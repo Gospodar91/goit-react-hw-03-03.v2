@@ -41,7 +41,9 @@ const services= {
   async getReview(id) {
     try {
       const data = await axios.get(`/movie/${id}/reviews?&page=1`, { params });
+      console.log("data", data);
       return data;
+      
     } catch (error) {
       console.log("Cast error error", error);
       throw new Error();
@@ -53,7 +55,7 @@ const services= {
         `search/movie?&language=en-US&query=${query}&page=1&include_adult=false`,
         { params }
       );
-      console.log("data", data);
+      // console.log("data", data);
       return data;
     } catch (error) {
       console.log("error", error);

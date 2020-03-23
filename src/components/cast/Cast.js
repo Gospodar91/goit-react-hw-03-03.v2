@@ -8,7 +8,7 @@ class Cast extends Component {
   componentDidMount() {
     services
       .getCast(this.props.match.params.movieId)
-      .then(cast => this.setState({ castInfo: cast }));
+      .then(cast => this.setState({ castInfo: cast,queryPages:cast.data.total_results }));
   }
   render() {
     const { cast } = { ...this.state.castInfo.data };
@@ -16,6 +16,9 @@ class Cast extends Component {
     return (
       <>
         <h2>Cast</h2>
+        {this.state.queryPages===0&& (
+          <h2>Sorry,Rewiews was not found</h2>
+        )}
         <ul>
           {shortCast &&
             shortCast.map(cast => (
