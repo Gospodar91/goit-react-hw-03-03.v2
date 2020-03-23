@@ -13,7 +13,6 @@ export const useRouter = () => {
     <>
       <Switch>
         <Route exact path="/home" component={HomePage} />
-
         <Suspense fallback={<div>Loading...</div>}>
           <Route
             path="/movies/:id/MovieDetailsPage"
@@ -32,8 +31,6 @@ export const useRouter = () => {
           <Route path="/moviesSearch/:movieId/cast" component={CastLazy} />
           <Route path="/moviesSearch/:movieId/reviews" component={RewiewLazy} />
         </Suspense>
-      
-     
       </Switch>
       <Redirect to="/home" />
     </>

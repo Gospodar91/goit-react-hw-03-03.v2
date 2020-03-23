@@ -25,8 +25,6 @@ async  componentDidMount() {
       id,
       genres
     } = { ...this.state.movieInfo.data };
- console.log('this.state', this.state)
-
     return (
       <>
       {this.state.status&& (

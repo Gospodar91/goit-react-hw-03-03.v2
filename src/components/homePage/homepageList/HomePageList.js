@@ -20,4 +20,3 @@ const HomePageList = ({ movie }) => {
 };
 export default HomePageList;
 
-//

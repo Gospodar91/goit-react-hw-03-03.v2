@@ -35,8 +35,7 @@ class MoviePage extends Component {
       overview,
       id
     } = targetSearch;
-    console.log("this propsMovieSearch", this.props);
-    console.log("this.stateMovieSearch", this.state);
+
     return (
       <>
         <h2 className="SearchMovie">Movie Search Page</h2>

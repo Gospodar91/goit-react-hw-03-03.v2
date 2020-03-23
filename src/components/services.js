@@ -5,7 +5,6 @@ const API_KEY = "5d541b775537fe62598d0f7b97768427";
 
 const params = {
   api_key: API_KEY
-  // language: "ru-RU"
 };
 axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 
@@ -13,7 +12,6 @@ const services= {
   async getTrendingData() {
     try {
       const data = await axios.get(`trending/all/day`, { params });
-    
       return data;
     } catch (error) {
       console.log("Trendingerror", error);
@@ -23,7 +21,6 @@ const services= {
   async movieDetailsPage(id) {
     try {
       const data = await axios.get(`movie/${id}`, { params });
-      console.log('data', data)
       return data;
     } catch (error) {
       console.log("MovieDetail error", error);
@@ -43,9 +40,7 @@ const services= {
   async getReview(id) {
     try {
       const data = await axios.get(`/movie/${id}/reviews?&page=1`, { params });
-      console.log("data", data);
       return data;
-      
     } catch (error) {
       console.log("Cast error error", error);
       throw new Error();
@@ -57,7 +52,7 @@ const services= {
         `search/movie?&language=en-US&query=${query}&page=1&include_adult=false`,
         { params }
       );
-      // console.log("data", data);
+      console.log("data", data);
       return data;
     } catch (error) {
       console.log("error", error);
@@ -65,8 +60,5 @@ const services= {
     }
   },
   
-  handleGoBack(props){
-    this.props.history.push('/home')
-  }
 };
 export default withRouter(services)
