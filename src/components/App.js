@@ -7,7 +7,6 @@ const App = () => {
   const routing = useRouter();
   return (
     <>
-     
         <div className="HeaderLink">
           <ul className="LinkList">
             <li className="LinkItem">
@@ -49,7 +48,7 @@ const App = () => {
           </ul>
           {routing}
         </div>
-    
+   
     </>
   );
 };

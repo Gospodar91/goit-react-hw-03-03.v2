@@ -32,9 +32,10 @@ export const useRouter = () => {
           <Route path="/moviesSearch/:movieId/cast" component={CastLazy} />
           <Route path="/moviesSearch/:movieId/reviews" component={RewiewLazy} />
         </Suspense>
-
-        <Redirect to="/home" />
+      
+     
       </Switch>
+      <Redirect to="/home" />
     </>
   );
 };

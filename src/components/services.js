@@ -1,4 +1,5 @@
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 const API_KEY = "5d541b775537fe62598d0f7b97768427";
 
@@ -7,7 +8,8 @@ const params = {
   // language: "ru-RU"
 };
 axios.defaults.baseURL = "https://api.themoviedb.org/3/";
-export default  {
+
+const services= {
   async getTrendingData() {
     try {
       const data = await axios.get(`trending/all/day`, { params });
@@ -58,5 +60,9 @@ export default  {
       throw new Error();
     }
   },
- 
+  
+  handleGoBack(props){
+    this.props.history.push('/home')
+  }
 };
+export default withRouter(services)
