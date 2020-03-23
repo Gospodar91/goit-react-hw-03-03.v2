@@ -13,6 +13,7 @@ const services= {
   async getTrendingData() {
     try {
       const data = await axios.get(`trending/all/day`, { params });
+    
       return data;
     } catch (error) {
       console.log("Trendingerror", error);
@@ -22,6 +23,7 @@ const services= {
   async movieDetailsPage(id) {
     try {
       const data = await axios.get(`movie/${id}`, { params });
+      console.log('data', data)
       return data;
     } catch (error) {
       console.log("MovieDetail error", error);

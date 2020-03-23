@@ -5,12 +5,13 @@ import services from "../services";
 
 class MovieDetailsPage extends Component {
   state = {
-    movieInfo: []
+    movieInfo: [],
+    status:null
   };
- componentDidMount() {
-    services
+async  componentDidMount() {
+  await  services
       .movieDetailsPage(this.props.location.state.id)
-      .then(data => this.setState({ movieInfo: data }));
+      .then(data => this.setState({ movieInfo: data,status:data.data.status }));
   }
   handleGoBack=()=>{
     this.props.history.push('/home')
@@ -24,10 +25,12 @@ class MovieDetailsPage extends Component {
       id,
       genres
     } = { ...this.state.movieInfo.data };
- 
+ console.log('this.state', this.state)
 
     return (
       <>
+      {this.state.status&& (
+        <>
         <button type="button" onClick={this.handleGoBack}>
           Go back
         </button>
@@ -69,7 +72,10 @@ class MovieDetailsPage extends Component {
             Review
           </Link>
         </div>
+        </>
+      )}
       </>
+              
     );
   }
 }
