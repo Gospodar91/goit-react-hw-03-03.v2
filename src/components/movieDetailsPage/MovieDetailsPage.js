@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import { Switch, Link, Route } from "react-router-dom";
-import Cast from "../cast/Cast";
-import Reviews from "../reviews/Reviews";
-import css from "../../components/App.css";
+import { Link } from "react-router-dom";
+
 import services from "../services";
 
 class MovieDetailsPage extends Component {
   state = {
     movieInfo: []
   };
-  componentDidMount() {
+ componentDidMount() {
     services
       .movieDetailsPage(this.props.location.state.id)
       .then(data => this.setState({ movieInfo: data }));

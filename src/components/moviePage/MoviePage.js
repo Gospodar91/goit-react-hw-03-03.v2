@@ -6,22 +6,25 @@ import SearchForm from "./seacrhForm/SearhForm";
 class MoviePage extends Component {
   state = {
     searchinfo: [],
-    query: null
+    query: null,
+    queryPages: null
   };
-  componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
     if (prevState.query !== this.state.query) {
-      services
+      await services
         .getSearchMovie(this.state.query)
-        .then(data => this.setState({ searchinfo: data.data.results }));
+        .then(data =>
+          this.setState({ searchinfo: data.data.results, queryPages: data.data.total_results })
+        );
     }
   }
   getQueryonSubmit = async e => {
     e.preventDefault();
     await this.setState({ query: e.target.elements[0].value });
   };
-  handleGoBack=()=>{
-    this.props.history.push('/home')
-  }
+  handleGoBack = () => {
+    this.props.history.push("/home");
+  };
   render() {
     const { searchinfo } = this.state;
     const targetSearch = { ...searchinfo[0] };
@@ -32,22 +35,21 @@ class MoviePage extends Component {
       overview,
       id
     } = targetSearch;
-    console.log("searchinfo[0]", targetSearch);
-    console.log("results", this.state.searchinfo);
-    console.log("this.state.query", this.state.query);
+    console.log("this propsMovieSearch", this.props);
+    console.log("this.stateMovieSearch", this.state);
     return (
       <>
         <h2 className="SearchMovie">Movie Search Page</h2>
         <button
           className="goBackButton"
           type="button"
-          onClick={ this.handleGoBack}
+          onClick={this.handleGoBack}
         >
           Go back
         </button>
 
         <SearchForm getQueryonSubmit={this.getQueryonSubmit} />
-        {this.state.query && searchinfo.length === 0 && (
+        {this.state.queryPages===0&& (
           <h2>Sorry,film was not found</h2>
         )}
         {this.state.query && searchinfo.length > 1 && (
@@ -113,5 +115,3 @@ class MoviePage extends Component {
   }
 }
 export default MoviePage;
-
-

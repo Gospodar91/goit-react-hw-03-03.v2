@@ -11,8 +11,6 @@ class Cast extends Component {
       .then(cast => this.setState({ castInfo: cast }));
   }
   render() {
-    console.log("hi");
-    console.log("this.stateCAst", this.state);
     const { cast } = { ...this.state.castInfo.data };
     const shortCast = cast && cast.slice([0], [5]);
     return (
