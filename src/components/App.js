@@ -29,7 +29,7 @@ const App = () => {
               </NavLink>
             </li>
             <li className="LinkItem">
-              <NavLink 
+              <NavLink  
                 to="/moviesSearch/"
                 activeStyle={{
                   color: "red",

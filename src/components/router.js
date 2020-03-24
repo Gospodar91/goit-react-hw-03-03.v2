@@ -9,22 +9,22 @@ export const useRouter = () => {
     import("./movieDetailsPage/MovieDetailsPage")
   );
   return (
-    <>      <Suspense fallback={<div>Loading...</div>}>
+    <>
       <Switch>
         <Route exact path="/home" component={HomePage} />
-  
+        <Suspense fallback={<div>Loading...</div>}>
           <Route
-            path="/moviesSearch/:movieId" exact
+            path="/moviesSearch/:movieId"
             component={MovieDetailsPageLazy}
           />
 
         
           <Route exact path="/moviesSearch" component={MoviePageLazy} />
-          <Redirect to="/home" />
+          {/* <Route path="/moviesSearch/:movieId/cast" component={CastLazy} />
+          <Route path="/moviesSearch/:movieId/reviews" component={RewiewLazy} /> */}
+        </Suspense>
       </Switch>
-       
-      </Suspense>
-   
+      <Redirect to="/home" />
     </>
   );
 };

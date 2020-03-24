@@ -18,6 +18,7 @@ componentDidMount() {
     console.log('this.props.location.search', this.props.location.search)
   const parseSearchQuery = queryString.parse(location.search).query;
   console.log('parseSearchQuery', parseSearchQuery)
+  
   if(parseSearchQuery!== ""){
 
     
@@ -41,6 +42,7 @@ componentDidMount() {
     console.log('location Search', location.search)
     const parseSearchQuery = queryString.parse(location.search).query;
     console.log('parseSearchQuery', parseSearchQuery)
+ 
     if (prevState.query !== this.state.query) {
          services
         .getSearchMovie(this.state.query)
@@ -69,14 +71,7 @@ componentDidMount() {
 
   render() {
     const { searchinfo } = this.state;
-    const targetSearch = { ...searchinfo[0] };
-    const {
-      backdrop_path,
-      vote_average,
-      original_title,
-      overview,
-      id
-    } = targetSearch;
+    
     console.log("MoviePageProps", this.props);
     console.log("MoviePageState", this.state);
     return (
@@ -85,7 +80,7 @@ componentDidMount() {
 
         <SearchForm getQueryonSubmit={this.getQueryonSubmit} />
         {this.state.queryPages === 0 && <h2>Sorry,film was not found</h2>}
-        {this.state.query && searchinfo.length > 1 && (
+        {this.state.query  && (
           <>
             <ul>
               {searchinfo.map(searchinfo => (
@@ -110,46 +105,8 @@ componentDidMount() {
             </ul>
           </>
         )}
-        {this.state.query && searchinfo.length === 1 && (
-          <>
-            <div className="allInfo">
-              <div className="infoImg">
-                <img
-                  src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-                  alt="ololoshenka"
-                  className="SearchImg"
-                />{" "}
-              </div>
-              <div className="textArea">
-                <h2 className="title">{original_title}</h2>
-
-                <p className="score">Average score:{vote_average * 10}%</p>
-                <h2 className="overview">{overview}</h2>
-              </div>
-
-              <div className="LinkCastReview">
-                <Link
-                  className="CastLink"
-                  to={{
-                    pathname: `/moviesSearch/${id}/cast`,
-                    state: { id: id }
-                  }}
-                >
-                  Cast
-                </Link>
-
-                <Link
-                  to={{
-                    pathname: `/moviesSearch/${id}/reviews`,
-                    state: { id: id }
-                  }}
-                >
-                  Review
-                </Link>
-              </div>
-            </div>
-          </>
-        )}
+       
+       
       </>
     );
   }
