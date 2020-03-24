@@ -18,13 +18,7 @@ componentDidMount() {
     console.log('this.props.location.search', this.props.location.search)
   let parseSearchQuery = queryString.parse(location.search).query;
   console.log('parseSearchQuery', parseSearchQuery)
-// if(!parseSearchQuery){
- 
 
-//     this.setState({searchinfo:[]})
-    
-        
-// }
    if(parseSearchQuery){
 
     
@@ -38,7 +32,7 @@ componentDidMount() {
       })
     )
  
-    // .then((this.props.location.search = this.state.query));
+  
 
   }
  
@@ -66,7 +60,7 @@ componentDidMount() {
             
           })
         )
-        // .then((this.props.location.search = this.state.query));
+     
         
       }
 
