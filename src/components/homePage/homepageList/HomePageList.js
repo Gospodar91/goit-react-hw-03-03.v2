@@ -7,7 +7,7 @@ const HomePageList = ({ movie }) => {
       <li>
         <Link
           to={{
-            pathname: `/movies/${movie.id}/MovieDetailsPage`,
+            pathname: `/moviesSearch/${movie.id}`,
             state: { id: movie.id }
           }}
         >

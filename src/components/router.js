@@ -15,21 +15,21 @@ export const useRouter = () => {
         <Route exact path="/home" component={HomePage} />
         <Suspense fallback={<div>Loading...</div>}>
           <Route
-            path="/movies/:id/MovieDetailsPage"
+            path="/moviesSearch/:movieId"
             component={MovieDetailsPageLazy}
           />
 
           <Route
-            path="/movies/:movieId/MovieDetailsPage/cast"
+            path="/moviesSearch/:movieId/cast"
             component={CastLazy}
           />
           <Route
-            path="/movies/:movieId/MovieDetailsPage/reviews"
+            path="/moviesSearch/:movieId/reviews"
             component={RewiewLazy}
           />
           <Route path="/moviesSearch" component={MoviePageLazy} />
-          <Route path="/moviesSearch/:movieId/cast" component={CastLazy} />
-          <Route path="/moviesSearch/:movieId/reviews" component={RewiewLazy} />
+          {/* <Route path="/moviesSearch/:movieId/cast" component={CastLazy} />
+          <Route path="/moviesSearch/:movieId/reviews" component={RewiewLazy} /> */}
         </Suspense>
       </Switch>
       <Redirect to="/home" />

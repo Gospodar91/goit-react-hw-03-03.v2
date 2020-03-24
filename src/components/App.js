@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { useRouter } from "./router";
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
             </li>
             <li className="LinkItem">
               <NavLink
-                to="/moviesSearch"
+                to="/moviesSearch/"
                 activeStyle={{
                   color: "red",
                   textDecoration: "none",

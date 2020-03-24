@@ -1,10 +1,10 @@
 import React from "react";
 
-const SearchForm = ({ getQueryonSubmit }) => {
+const SearchForm = ({ getQueryonSubmit, }) => {
   return (
     <>
       <form className="form" onSubmit={getQueryonSubmit}>
-        <input
+        <input 
           className="SearchForm-input"
           type="text"
           autoComplete="off"

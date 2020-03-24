@@ -1,30 +1,51 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link,withRouter } from "react-router-dom";
 import services from "../services";
 import SearchForm from "./seacrhForm/SearhForm";
+import queryString from "query-string";
 
 class MoviePage extends Component {
   state = {
     searchinfo: [],
     query: null,
-    queryPages: null
+    queryPages: null,
+    prevSearchQuery: ""
   };
-  async componentDidUpdate(prevProps, prevState) {
+
+   componentDidUpdate(prevProps, prevState) {
+    const { location } = this.props;
+    console.log('location Search', location.search)
+    const parseSearchQuery = queryString.parse(location.search).query;
+    console.log('parseSearchQuery', parseSearchQuery)
     if (prevState.query !== this.state.query) {
-      await services
+         services
         .getSearchMovie(this.state.query)
         .then(data =>
-          this.setState({ searchinfo: data.data.results, queryPages: data.data.total_results })
-        );
-    }
+          this.setState({
+            searchinfo: data.data.results,
+            queryPages: data.data.total_results
+          })
+        )
+        .then((this.props.location.search = this.state.query));
+        
+      }
+
+    // this.props.history.push(`/moviesSearch${this.state.searchinfo.id}?query=${this.state.query}`);
+    // if (parseSearchQuery === undefined) {
+    //   return;
+    // }
   }
-  getQueryonSubmit = async e => {
+  getQueryonSubmit =async e => {
     e.preventDefault();
-    await this.setState({ query: e.target.elements[0].value });
+  await  this.setState({
+      query: e.target.elements[0].value,
+      prevSearchQuery: e.target.elements[0].value
+      
+    });
+    console.log('this.state', this.state)
+     this.props.history.push(`/moviesSearch/?query=${this.state.query}`);
   };
-  handleGoBack = () => {
-    this.props.history.push("/home");
-  };
+
   render() {
     const { searchinfo } = this.state;
     const targetSearch = { ...searchinfo[0] };
@@ -35,22 +56,14 @@ class MoviePage extends Component {
       overview,
       id
     } = targetSearch;
-
+    console.log("MoviePageProps", this.props);
+    console.log("MoviePageState", this.state);
     return (
       <>
         <h2 className="SearchMovie">Movie Search Page</h2>
-        <button
-          className="goBackButton"
-          type="button"
-          onClick={this.handleGoBack}
-        >
-          Go back
-        </button>
 
         <SearchForm getQueryonSubmit={this.getQueryonSubmit} />
-        {this.state.queryPages===0&& (
-          <h2>Sorry,film was not found</h2>
-        )}
+        {this.state.queryPages === 0 && <h2>Sorry,film was not found</h2>}
         {this.state.query && searchinfo.length > 1 && (
           <>
             <ul>
@@ -58,8 +71,15 @@ class MoviePage extends Component {
                 <li key={searchinfo.id}>
                   <Link
                     to={{
-                      pathname: `/movies/${searchinfo.id}/MovieDetailsPage`,
-                      state: { id: searchinfo.id }
+                      pathname: `/moviesSearch/${searchinfo.id}`,
+                     
+                      state: {
+                        search: `?search=${this.state.query}`,
+                       
+                        id: searchinfo.id,
+                        query: this.state.prevSearchQuery,
+                        from: `/moviesSeacrh/`
+                      }
                     }}
                   >
                     {searchinfo.original_title}
@@ -113,4 +133,4 @@ class MoviePage extends Component {
     );
   }
 }
-export default MoviePage;
+export default withRouter(MoviePage);

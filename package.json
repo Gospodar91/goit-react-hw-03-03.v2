@@ -2,8 +2,6 @@
   "name": "lesson",
   "version": "0.1.0",
   "private": true,
-
-  "homepage": "https://Gospodar91.github.io/goit-react-hw-04-01",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
@@ -12,6 +10,7 @@
     "basiclightbox": "^5.0.2",
     "gh-pages": "^2.2.0",
     "prop-types": "^15.7.2",
+    "query-string": "^6.11.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-loader-spinner": "^3.1.5",
@@ -26,7 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": "react-app"
