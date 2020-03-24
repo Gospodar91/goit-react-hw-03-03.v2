@@ -16,10 +16,16 @@ componentDidMount() {
   console.log('this.props', this.props)
   const { location } = this.props;
     console.log('this.props.location.search', this.props.location.search)
-  const parseSearchQuery = queryString.parse(location.search).query;
+  let parseSearchQuery = queryString.parse(location.search).query;
   console.log('parseSearchQuery', parseSearchQuery)
-  
-  if(parseSearchQuery!== ""){
+// if(!parseSearchQuery){
+ 
+
+//     this.setState({searchinfo:[]})
+    
+        
+// }
+   if(parseSearchQuery){
 
     
     services
@@ -31,28 +37,36 @@ componentDidMount() {
         query:parseSearchQuery
       })
     )
-    .then((this.props.location.search = this.state.query));
-    
+ 
+    // .then((this.props.location.search = this.state.query));
+
   }
+ 
+
 }
 
 
    componentDidUpdate(prevProps, prevState) {
-    const { location } = this.props;
-    console.log('location Search', location.search)
-    const parseSearchQuery = queryString.parse(location.search).query;
-    console.log('parseSearchQuery', parseSearchQuery)
+     if(prevProps.location.search!==this.props.location.search){
+       this.setState({searchinfo:[]})
+     }
  
+    console.log('prevProps', prevProps.location.search)
+    console.log('this.props.location.seacrh', this.props.location.search)
+
     if (prevState.query !== this.state.query) {
          services
         .getSearchMovie(this.state.query)
         .then(data =>
           this.setState({
             searchinfo: data.data.results,
-            queryPages: data.data.total_results
+            queryPages: data.data.total_results,
+           
+
+            
           })
         )
-        .then((this.props.location.search = this.state.query));
+        // .then((this.props.location.search = this.state.query));
         
       }
 
