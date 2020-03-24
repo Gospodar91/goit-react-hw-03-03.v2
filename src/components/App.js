@@ -11,7 +11,7 @@ const App = () => {
           <ul className="LinkList">
             <li className="LinkItem">
               <NavLink 
-                to="/home" exact
+                to="/home" 
                 activeStyle={{
                   color: "red",
                   textDecoration: "none",
@@ -29,7 +29,7 @@ const App = () => {
               </NavLink>
             </li>
             <li className="LinkItem">
-              <NavLink
+              <NavLink 
                 to="/moviesSearch/"
                 activeStyle={{
                   color: "red",

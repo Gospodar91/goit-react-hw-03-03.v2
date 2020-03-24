@@ -7,10 +7,34 @@ import queryString from "query-string";
 class MoviePage extends Component {
   state = {
     searchinfo: [],
-    query: null,
+    query: '',
     queryPages: null,
     prevSearchQuery: ""
   };
+
+componentDidMount() {
+  console.log('this.props', this.props)
+  const { location } = this.props;
+    console.log('this.props.location.search', this.props.location.search)
+  const parseSearchQuery = queryString.parse(location.search).query;
+  console.log('parseSearchQuery', parseSearchQuery)
+  if(parseSearchQuery!== ""){
+
+    
+    services
+    .getSearchMovie (parseSearchQuery)
+    .then(data =>
+      this.setState({
+        searchinfo: data.data.results,
+        queryPages: data.data.total_results,
+        query:parseSearchQuery
+      })
+    )
+    .then((this.props.location.search = this.state.query));
+    
+  }
+}
+
 
    componentDidUpdate(prevProps, prevState) {
     const { location } = this.props;
@@ -30,10 +54,7 @@ class MoviePage extends Component {
         
       }
 
-    // this.props.history.push(`/moviesSearch${this.state.searchinfo.id}?query=${this.state.query}`);
-    // if (parseSearchQuery === undefined) {
-    //   return;
-    // }
+   
   }
   getQueryonSubmit =async e => {
     e.preventDefault();
@@ -78,7 +99,7 @@ class MoviePage extends Component {
                        
                         id: searchinfo.id,
                         query: this.state.prevSearchQuery,
-                        from: `/moviesSeacrh/`
+                        from: `/moviesSearch/`
                       }
                     }}
                   >

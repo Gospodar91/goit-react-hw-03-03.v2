@@ -1,7 +1,11 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import React, { Component,lazy,Suspense } from "react";
+
+import { Link, withRouter, Switch,Route } from "react-router-dom";
 
 import services from "../services";
+
+const CastLazy = lazy(() => import("../cast/Cast"));
+const RewiewLazy = lazy(() => import("../reviews/Reviews"));
 
 class MovieDetailsPage extends Component {
   state = {
@@ -10,6 +14,7 @@ class MovieDetailsPage extends Component {
     query: ""
   };
   componentDidMount() {
+  
     services
       .movieDetailsPage(this.props.location.state.id)
       .then(data =>
@@ -67,7 +72,7 @@ class MovieDetailsPage extends Component {
               <Link
                 className="CastLink"
                 to={{
-                  pathname: `/movies/${id}/MovieDetailsPage/cast`,
+                  pathname: `/moviesSearch/${id}/cast`,
                   state: { id: id }
                 }}
               >
@@ -77,13 +82,26 @@ class MovieDetailsPage extends Component {
               <Link
                 className="RewiewLink"
                 to={{
-                  pathname: `/movies/${id}/MovieDetailsPage/reviews`,
+                  pathname: `/moviesSearch/${id}/reviews`,
                   state: { id: id }
                 }}
               >
                 Review
               </Link>
+              <Suspense fallback={<div>Loading...</div>}>
+              <Switch>
+              <Route
+            path="/moviesSearch/:movieId/cast"
+            component={CastLazy}
+          />
+          <Route
+            path="/moviesSearch/:movieId/reviews"
+            component={RewiewLazy}
+          />
+          </Switch>
+          </Suspense>
             </div>
+            
           </>
         )}
       </>
