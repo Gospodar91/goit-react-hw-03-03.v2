@@ -24,7 +24,7 @@ class Reviews extends Component {
       <>
         <h2>Rewiews</h2>
         {this.state.queryPages === 0 && <h2>Sorry,Rewiews was not found</h2>}
-        <ul>
+        <ul className="rewList">
           {shortResultsArr &&
             shortResultsArr.map(results => (
               <li key={results.id}>

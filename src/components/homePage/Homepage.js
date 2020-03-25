@@ -14,7 +14,7 @@ class HomePage extends Component {
   render() {
     return (
       <>
-        <ul>
+        <ul className='HomeList'>
           {this.state.movies.map(movie => (
             <HomePageList movie={movie} key={movie.id} />
           ))}

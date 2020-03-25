@@ -90,10 +90,10 @@ componentDidMount() {
         {this.state.queryPages === 0 && <h2>Sorry,film was not found</h2>}
         {this.state.query  && (
           <>
-            <ul>
+            <ul className='MoviepageUl'>
               {searchinfo.map(searchinfo => (
-                <li key={searchinfo.id}>
-                  <Link
+                <li className='MoviepageLi' key={searchinfo.id}>
+                  <Link className="LinkList"
                     to={{
                       pathname: `/moviesSearch/${searchinfo.id}`,
                      
@@ -108,6 +108,7 @@ componentDidMount() {
                   >
                     {searchinfo.original_title}
                   </Link>
+                  <img className='smallImg' alt="unavailable"src={`https://image.tmdb.org/t/p/original${searchinfo.backdrop_path}`}/>
                 </li>
               ))}
             </ul>

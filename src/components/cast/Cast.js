@@ -19,10 +19,11 @@ class Cast extends Component {
         {this.state.queryPages===0&& (
           <h2>Sorry,Rewiews was not found</h2>
         )}
-        <ul>
+        <ul className= 'CastList'>
           {shortCast &&
             shortCast.map(cast => (
-              <li key={cast.id}>
+              <li key={cast.id} className='CastItem'>
+                
                 <p>{cast.name}</p>
                 <img
                   className="CastImg"

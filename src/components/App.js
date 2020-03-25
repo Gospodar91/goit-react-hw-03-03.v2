@@ -10,7 +10,8 @@ const App = () => {
         <div className="HeaderLink">
           <ul className="LinkList">
             <li className="LinkItem">
-              <NavLink 
+              <NavLink  
+              className ='AppLink'
                 to="/home" 
                 activeStyle={{
                   color: "red",
@@ -29,7 +30,7 @@ const App = () => {
               </NavLink>
             </li>
             <li className="LinkItem">
-              <NavLink  
+              <NavLink      className ='AppLink'
                 to="/moviesSearch/"
                 activeStyle={{
                   color: "red",

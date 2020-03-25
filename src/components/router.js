@@ -17,11 +17,8 @@ export const useRouter = () => {
             path="/moviesSearch/:movieId"
             component={MovieDetailsPageLazy}
           />
-
-        
-          <Route exact path="/moviesSearch" component={MoviePageLazy} />
-          {/* <Route path="/moviesSearch/:movieId/cast" component={CastLazy} />
-          <Route path="/moviesSearch/:movieId/reviews" component={RewiewLazy} /> */}
+ <Route exact path="/moviesSearch" component={MoviePageLazy} />
+       
         </Suspense>
       </Switch>
       <Redirect to="/home" />

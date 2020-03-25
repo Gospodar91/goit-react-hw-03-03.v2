@@ -35,7 +35,9 @@ ul {
   text-decoration-style: none;
 
 }
-
+.allInfo{
+  text-align: center;
+}
 .LinkList {
   display: flex;
   text-decoration-style: none !important;
@@ -55,11 +57,12 @@ ul {
 
 }
 
-.goBackButton {
+.buttonBack {
   border: 2px solid green;
   width: 100px;
   background-color: white;
   margin-bottom: 50px;
+ 
 
 }
 
@@ -70,6 +73,7 @@ ul {
 
 .CastImg {
   width: 200px;
+ 
 }
 
 .LinkCastReview {
@@ -80,8 +84,74 @@ ul {
 
 .CastLink {
   margin-bottom: 30px;
+  list-style-type: none;
+  text-decoration: none;
+  color: green
 }
 
 .RewiewLink {
   margin-bottom: 20px;
+  list-style-type: none;
+  text-decoration: none;
+  color: green
+}
+.HomeList{
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  width:1200px;
+  justify-content: space-between;
+
+}
+.HomePageList{
+   width: 200px ;  
+   margin-bottom: 30px;
+   
+  
+}
+.LinkList{
+  list-style-type: none;
+  text-decoration: none;
+  color: green
+}
+
+.smallImg{
+  width: 250px;
+  height: 130px;
+}
+.MoviepageUl{
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  width:1200px;
+  justify-content: space-between;
+
+}
+.MoviepageLi{
+  width: 200px ;  
+  margin-bottom: 30px;
+  list-style-type: none;
+  text-decoration: none;
+  color: green
+
+}
+.CastList{
+  display: flex;
+  
+  list-style-type: none;
+  width:1200px;
+  justify-content: space-between;
+
+}
+.CastItem{
+  width: 200px;
+  height: 200px;
+}
+.title{
+  color: red;
+  font-size: 34px;
+}
+.rewList{
+  list-style-type: none;
+  width: 1200px;
 }

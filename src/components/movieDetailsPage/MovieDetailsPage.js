@@ -27,13 +27,11 @@ class MovieDetailsPage extends Component {
 
   handelGoBack = () => {
     const { history, location } = this.props;
-    console.log("ButtonQuery", location.state);
     if (location.state.query === undefined) {
       history.push("/home");
     } else history.push(`/moviesSearch/?query=${location.state.query}`);
   };
   render() {
-    console.log('this.propsMovieDetails', this.props.location.state)
     const {
       backdrop_path,
       original_title,
@@ -46,7 +44,7 @@ class MovieDetailsPage extends Component {
       <>
         {this.state.status && (
           <>
-            <button type="button" onClick={this.handelGoBack}>
+            <button className='buttonBack' type="button" onClick={this.handelGoBack}>
               Go back
             </button>
             <div className="allInfo">
@@ -60,10 +58,10 @@ class MovieDetailsPage extends Component {
                 <h2 className="title">{original_title}</h2>
                 <p className="score">Average score:{vote_average * 10}%</p>
                 <h2 className="overviwe">{overview}</h2>
-                <p>
+                <p> Genre:
                   {genres &&
                     genres.map(genre => (
-                      <span key={genre.id}>{genre.name} </span>
+                      <span key={genre.id}> {genre.name} </span>
                     ))}
                 </p>
               </div>
